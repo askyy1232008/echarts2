@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>right</title>
+    <link rel="stylesheet" href="./css/api.css">
+    <style>
+    body {
+        background-color: #020933;
+        overflow: hidden;
+    }
+    video {
+        object-fit: fill;
+    }
+    #text-box{
+      background: url(./images/qyjs1.png) no-repeat 0px 0px;
+      background-size: 100% 100%;
+    }
+    </style>
+    <!-- <link rel="stylesheet" media="screen and (min-width:1920px)" href="./css/min1920.css">
+    <link rel="stylesheet" media="screen and (max-width:1080px)" href="./css/max1080.css"> -->
+</head>
+
+<body>
+    <div id="video-box">
+        <video id="video" width="100%" height="" controls="" autoplay="">
+    <source src="http://www.xingzhe5688.cn/skin/images/xingzhe.webm" type="video/webm"></source>
+    </video>
+    </div>
+    <div id="text-box"></div>
+    <noscript>
+      <p>本页面需要浏览器支持（启用） JavaScript。
+    </noscript>
+    <!--[if lt IE 9]> 　　　 　
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js">
+    </script>
+    <![endif]-->
+    <script type="text/javascript" src="./script/jquery.min.js"></script>
+    <script type="text/javascript" src="./script/right.js"></script>
+</body>
+
+</html>

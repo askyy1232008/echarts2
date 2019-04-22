@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>echart</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+</head>
+
+<body>
+    <form id="form" runat="server">
+        <div id="testContainer" class="testContainer" style="text-align:center;">
+          <p id="old" style="color:#fff;font-size:50px;"></p>
+          <p id="new" style="color:#fff;font-size:50px;"></p>
+        </div>
+    </form>
+</body>
+<script type="text/javascript" src="/script/jquery.min.js"></script>
+<script>
+    function RandomNum(Min, Max) {
+        var Range = Max - Min;
+        var Rand = Math.random();
+        var num = Min + Math.round(Rand * Range);
+        return num;
+    }
+    var min = 0,
+        max = 2;
+    var order = 0;
+    function getData() {
+        //需引入jQuery
+        $.ajax({
+            url: "http://sh.xingzhe5688.com:8080/SearchData/getData/getData", //sh.xingzhe5688.com
+            type: "Get",
+            cache: false,
+            async: false,
+            data: {
+                'id': 1
+            },
+            dataType: "json",
+            success: function(data) {
+                //On ajax success do this
+                console.info("get success.");
+                order = data.data.dorder;
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                //On error do this
+                console.info("get error.");
+                if (xhr.status == 200) {
+                    alert(ajaxOptions);
+                } else {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            }
+        });
+    }
+
+    function updateData(){
+      var data = {};
+      data.id = 1;
+      data.dorder = order;
+      data.duser = 10875;
+      data.dcar = 4822;
+      //需引入jQuery
+      $.ajax({
+          url:  'http://sh.xingzhe5688.com:8080/SearchData/getData/updateData',
+          type: 'POST',
+          cache: false,
+          async: false,
+          data: JSON.stringify(data),
+          dataType: 'json',
+          contentType: 'application/json',
+          success:function(r){
+            console.info("post success.");
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+              //On error do this
+              console.info("post error.");
+              if (xhr.status == 200) {
+
+                  alert(ajaxOptions);
+              } else {
+                  alert(xhr.status);
+                  alert(thrownError);
+              }
+          }
+     });
+    }
+
+    $(function() {
+        window.setInterval(function() {
+            getData();
+            $('#old').html(order);
+        }, 10000);
+        window.setInterval(function() {
+            order += RandomNum(min,max);
+            updateData();
+            $('#new').html(order);
+        }, 100000);
+    })
+</script>
+
+</html>
